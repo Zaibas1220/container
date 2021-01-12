@@ -60,4 +60,15 @@ public class ContainerHistory {
 
         return average /= history.size();
     }
+
+    public double greatesFluctuation() {
+        if (!history.isEmpty()) {
+            if (Math.abs(maxValue()) >= Math.abs(minValue())) {
+                return maxValue();
+            } else {
+                return minValue();
+            }
+        }
+        return 0;
+    }
 }
