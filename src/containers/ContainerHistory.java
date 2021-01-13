@@ -58,7 +58,7 @@ public class ContainerHistory {
             }
         }
 
-        return average /= history.size();
+        return average / history.size();
     }
 
     public double greatesFluctuation() {
@@ -70,5 +70,16 @@ public class ContainerHistory {
             }
         }
         return 0;
+    }
+
+    public double variance() {
+        double variance = 0;
+        if (history.size() > 1) {
+            for (double num : history) {
+                variance += Math.pow((num - average()), 2);
+            }
+            variance /= history.size() - 1;
+        }
+        return variance;
     }
 }
