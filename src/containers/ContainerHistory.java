@@ -23,53 +23,41 @@ public class ContainerHistory {
 
     public double maxValue() {
         double maxValue = 0;
-
-        if (!history.isEmpty()) {
-            for (double value : history) {
-                if (value > maxValue) {
-                    maxValue = value;
-                }
+        for (double value : history) {
+            if (value > maxValue) {
+                maxValue = value;
             }
         }
-
         return maxValue;
     }
 
     public double minValue() {
         double minValue = 0;
-
-        if (!history.isEmpty()) {
-            for (double value : history) {
-                if (value > minValue) {
-                    minValue = value;
-                }
+        for (double value : history) {
+            if (value > minValue) {
+                minValue = value;
             }
         }
-
         return minValue;
     }
 
     public double average() {
         double average = 0;
-
-        if (!history.isEmpty()) {
-            for (double value : history) {
-                average += value;
-            }
+        for (double value : history) {
+            average += value;
         }
-
         return average / history.size();
     }
 
     public double greatesFluctuation() {
-        if (!history.isEmpty()) {
-            if (Math.abs(maxValue()) >= Math.abs(minValue())) {
-                return maxValue();
-            } else {
-                return minValue();
+        double greatestFluctuation = 0;
+        for (int i = 0; i < history.size() - 1; i++){
+            double fluctuation = Math.abs(history.get(i) - history.get(i+1));
+            if (fluctuation > greatestFluctuation){
+                greatestFluctuation = fluctuation;
             }
         }
-        return 0;
+        return greatestFluctuation;
     }
 
     public double variance() {

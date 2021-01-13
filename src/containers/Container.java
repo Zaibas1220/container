@@ -28,7 +28,6 @@ public class Container {
 
     public void addToTheContainer(double amount) {
         if (amount < 0){
-            //Non fa nulla.
         } else if((this.volume+amount)>this.capacity){
             this.volume = this.capacity;
         } else {
